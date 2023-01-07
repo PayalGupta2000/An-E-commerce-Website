@@ -14,6 +14,8 @@ def home(request):
     return render(request,"home.html",context)
 
 
+# but jis pic pr click kr rhe h uss ka description like uski image show nhi ho rhi
+
 
 
 
@@ -34,9 +36,12 @@ def store(request,category_slug=None):
         }
     return render(request,"store.html",context)
 
+
+
+
 def product_detail(request,category_slug,product_slug):
     try:
-        single_product=Product.objects.get(category=category_slug,slug=product_slug)
+        single_product=Product.objects.get(category__slug=category_slug, slug=product_slug)
     except Exception as e:
         raise e
 
